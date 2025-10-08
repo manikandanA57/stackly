@@ -1,0 +1,56 @@
+from django.urls import path
+from . import views
+from django.conf import settings
+from django.conf.urls.static import static
+
+urlpatterns = [
+    path('register/', views.RegisterView.as_view(), name='register'),
+    path('login/', views.LoginView.as_view(), name='login'),
+    path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('departments/', views.DepartmentListView.as_view(), name='department-list'),
+    path('departments/<int:pk>/', views.DepartmentDetailView.as_view(), name='department-detail'),
+    path('roles/', views.RoleView.as_view(), name='role-create'),
+    path('roles/<int:pk>/', views.RoleDetailView.as_view(), name='role-detail'),
+    path('users/', views.ManageUsersView.as_view(), name='manage-users'),
+    path('users/<int:pk>/', views.ManageUserDetailView.as_view(), name='manage-user-detail'),
+    path('branches/', views.BranchListView.as_view(), name='branch-list'),
+    path('branches/<int:pk>/', views.BranchDetailView.as_view(), name='branch-detail'),
+    path('products/', views.ProductListView.as_view(), name='product-list'),
+    path('products/<int:pk>/', views.ProductDetailView.as_view(), name='product-detail'),
+    path('products/import/', views.ProductImportView.as_view(), name='product-import'),
+    path('categories/', views.CategoryListView.as_view(), name='category-list'),
+    path('categories/<int:pk>/', views.CategoryDetailView.as_view(), name='category-detail'),
+    path('tax-codes/', views.TaxCodeListView.as_view(), name='tax-code-list'),
+    path('tax-codes/<int:pk>/', views.TaxCodeDetailView.as_view(), name='tax-code-detail'),
+    path('uoms/', views.UOMListView.as_view(), name='uom-list'),
+    path('uoms/<int:pk>/', views.UOMDetailView.as_view(), name='uom-detail'),
+    path('warehouses/', views.WarehouseListView.as_view(), name='warehouse-list'),
+    path('warehouses/<int:pk>/', views.WarehouseDetailView.as_view(), name='warehouse-detail'),
+    path('sizes/', views.SizeListView.as_view(), name='size-list'),
+    path('sizes/<int:pk>/', views.SizeDetailView.as_view(), name='size-detail'),
+    path('colors/', views.ColorListView.as_view(), name='color-list'),
+    path('colors/<int:pk>/', views.ColorDetailView.as_view(), name='color-detail'),
+    path('suppliers/', views.SupplierListView.as_view(), name='supplier-list'),
+    path('suppliers/<int:pk>/', views.SupplierDetailView.as_view(), name='supplier-detail'),
+    path('onboarding/', views.OnboardingListView.as_view(), name='onboarding-list'),
+    path('onboarding/<int:pk>/', views.OnboardingDetailView.as_view(), name='onboarding-detail'),
+    path('attendance/', views.AttendanceView.as_view(), name='attendance'),
+    path('attendance/check-in-out/', views.CheckInOutView.as_view(), name='check-in-out'),
+    path('attendance/holidays/', views.GovernmentHolidayView.as_view(), name='holidays'),
+    path('tasks/', views.TaskListView.as_view(), name='task-list'),
+    path('tasks/<int:pk>/', views.TaskDetailView.as_view(), name='task-detail'),
+    path('task-summary/', views.TaskSummaryView.as_view(), name='task-summary'),
+    path('user-list/',views.UserListView.as_view(), name = 'user-list'),
+    path('dashboard/tasks/', views.DashboardTaskView.as_view(), name='dashboard-tasks'),
+    path('dashboard/attendance/', views.DashboardAttendanceView.as_view(), name='dashboard-attendance'),
+    path('forgot-password/', views.ForgotPasswordView.as_view(), name='forgot-password'),
+    path('reset-password/<str:token>/', views.ResetPasswordView.as_view(), name='reset-password'),
+    path('customers/', views.CustomerListView.as_view(), name='customer_list'),
+    path('customers/<int:pk>/', views.CustomerDetailView.as_view(), name='customer_detail'),
+    path('customers/summary/', views.CustomerSummaryView.as_view(), name='customer_summary'),
+    path('customers/duplicates/', views.CustomerDuplicatesView.as_view(), name='customer_duplicates'),
+    path('customers/merge/', views.CustomerMergeView.as_view(), name='customer_merge'),
+   
+
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
